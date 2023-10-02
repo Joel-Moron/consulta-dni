@@ -1,0 +1,37 @@
+* {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  padding: 60px;
+}
+
+input {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgb(97, 32, 158);
+  color: black;
+  font-size: 1.2rem;
+  outline: none;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.dni-container {
+  background-color: #264186;
+  border-radius: 16px;
+  border-width: 1;
+  border-style: solid;
+  margin-top: 15px;
+  width: 50%;
+  padding: 15px;
+}
