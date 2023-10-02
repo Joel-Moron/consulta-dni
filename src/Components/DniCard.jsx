@@ -1,11 +1,31 @@
-import React from 'react'
-import second from '../assets/logo2.png'
-export const DniCard = ({getDates}) => {
-    const fechaActual = new Date();
-    const horas = fechaActual.getHours();
-    const minutos = fechaActual.getMinutes();
+import React, { useEffect, useState } from 'react';
 
-    const horaActual = `${horas}:${minutos}`;
+export const DniCard = ({ getDates }) => {
+  const [horaActual, setHoraActual] = useState('');
+
+  useEffect(() => {
+    const formatearNumero = (numero) => {
+      // Agregar un cero al inicio si el número es menor que 10
+      return numero < 10 ? `0${numero}` : numero.toString();
+    };
+
+    const actualizarHora = () => {
+      const fechaActual = new Date();
+      const horas = formatearNumero(fechaActual.getHours());
+      const minutos = formatearNumero(fechaActual.getMinutes());
+      const segundos = formatearNumero(fechaActual.getSeconds());
+
+      const horaActual = `${horas}:${minutos}:${segundos}`;
+      setHoraActual(horaActual);
+    };
+
+    actualizarHora();
+
+    const intervalo = setInterval(actualizarHora, 1000);
+
+    return () => clearInterval(intervalo);
+  }, []);
+
     return (
         <>
             <div className='dni-container'>
@@ -24,8 +44,8 @@ export const DniCard = ({getDates}) => {
                     </div>
                     <div style={{ marginLeft: 50}}>
                         <p style={{ color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Nombre: {getDates.nombre} </p>
-                        <p style={{ color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Apellido P. {getDates.apellidoP}</p>
-                        <p style={{ color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Apellido M. {getDates.apellidoM}</p>
+                        <p style={{ color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Apellido P. : {getDates.apellidoP}</p>
+                        <p style={{ color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Apellido M. : {getDates.apellidoM}</p>
                         <p style={{ color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Ingenieria de Software con IA </p>
                         <p style={{ color: '#fff', fontSize: 25, fontWeight: 'bold' }}>DNI: {getDates.dni}</p>
                     </div>

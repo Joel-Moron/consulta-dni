@@ -21,7 +21,7 @@ export const ConsultationApp = () => {
           
             const data = await response.json();
             console.log(data);
-            setGetDates({ dni: data.dni, nombre: data.nombres, apellidoP: data.apellidoMaterno, apellidoM: data.apellidoPaterno})
+            setGetDates({ dni: data.dni, nombre: data.nombres, apellidoM: data.apellidoMaterno, apellidoP: data.apellidoPaterno})
           } catch (error) {
             console.error('Error al obtener los datos:', error);
           }
